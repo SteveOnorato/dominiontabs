@@ -1259,6 +1259,27 @@ class DividerDrawer(object):
         fontSize = 12
         name = card.name.upper()
 
+        if name == "BOONS":
+            textInset = 40
+        elif name == "HEXES":
+            textInset = 40
+        elif name == "STATES":
+            textInset = 40
+        elif card.isAttack():
+            self.canvas.setFillColorRGB(1, .03, .03)
+            self.canvas.setStrokeColorRGB(0, 0, 0)  # choose your line color
+            self.canvas.setLineWidth(0.05)
+            t = self.canvas.beginText()
+            t.setTextRenderMode(2)
+            self.canvas._code.append(t.getCode())
+        elif card.isType("Ruins"):
+            self.canvas.setFillColorRGB(1, 1, 1)
+            self.canvas.setStrokeColorRGB(0.2, 0.2, 0.2)  # choose your line color
+            self.canvas.setLineWidth(0.04)
+            t = self.canvas.beginText()
+            t.setTextRenderMode(2)
+            self.canvas._code.append(t.getCode())
+
         textWidth -= textInset
         textWidth -= textInsetRight
 
@@ -1306,11 +1327,11 @@ class DividerDrawer(object):
                     w = textInset
 
                 def drawWordPiece(text, fontSize):
-                    self.canvas.setFont(self.font_mapping["Regular"], fontSize)
+                    self.canvas.setFont(self.font_mapping["Bold"], fontSize)
                     if text != " ":
                         self.canvas.drawString(w, h, text)
                     return pdfmetrics.stringWidth(
-                        text, self.font_mapping["Regular"], fontSize
+                        text, self.font_mapping["Bold"], fontSize
                     )
 
                 for i, word in enumerate(words):

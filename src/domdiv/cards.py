@@ -148,6 +148,9 @@ class Card(object):
     def isType(self, what):
         return what in self.getType().getTypeNames()
 
+    def isAttack(self):
+        return self.isType("Attack")
+
     def isExpansion(self):
         return self.isType("Expansion")
 
