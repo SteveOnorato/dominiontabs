@@ -2,6 +2,44 @@
 
 [![Build Status](https://travis-ci.com/sumpfork/dominiontabs.svg?branch=master)](https://travis-ci.com/sumpfork/dominiontabs)
 
+## Steve's notes
+
+Quick & dirty modifications to match my preference:
+
+* Make tab names bold.
+* Center Boons/Hexes/States (only works for English).
+* Use red text (with black outline) for Attacks.
+* Use white text (with black outline) for Ruins.
+* Fix vertical offsets
+
+Use pyenv on macOS:
+
+    brew install pyenv
+    # List available versions:
+    pyenv install -l
+    # Install the latest:
+    pyenv install 3.9.0
+    pyenv global 3.9.0
+    echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc
+    zsh
+
+Install the original version:
+
+    pip install domdiv
+    
+Copy modified code over: 
+
+    # show the location:
+    pip show domdiv
+    # use the Location
+    cp -r /Users/steveo/PycharmProjects/dominiontabs/src/domdiv/*  $(pip show domdiv | grep '^Location:' | cut -f2 -d' ')/domdiv/
+
+Command line (run from target directory):
+
+    dominion_dividers --expansions adventures guilds renaissance "dark ages" nocturne --special-card-groups --no-trash --exclude-events --tabs-only --label 8167 --expansion-dividers --centre-expansion-dividers  -o dividers2.pdf
+
+ 
+
 ## Introduction
 
 This is a script and library to generate card dividers for storing cards for the game [Dominion](https://boardgamegeek.com/boardgame/36218/dominion). If you are just looking go generate some dominion dividers, there is no need to install this script as I host a [live version of this generator code](http://domtabs.sandflea.org). However, if you want to use arguments that I don't expose on that page, or change the code, or contribute to the project the full generation code (not the web interface or the fonts) is included here, and contributions are more than welcome.
